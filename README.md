@@ -1,5 +1,5 @@
 # tweet-box
-A Implement Simulation of Twitter tweet box.
+A Implement Simulation of Twitter's tweet box.
 
 
 ### Install
