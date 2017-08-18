@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, mapProps, flattenProp } from 'recompose';
+import { compose, mapProps, flattenProp, onlyUpdateForKeys } from 'recompose';
 
 const enhance = compose(
   mapProps(({ limit, message, ...rest }) => ({
@@ -20,6 +20,7 @@ const enhance = compose(
     isButtonDisable: !message.length || isLessThanTextRemaining,
   })),
   flattenProp('user'),
+  onlyUpdateForKeys(['message', 'textRemaining', 'isLessThanTextRemaining', 'isButtonDisable']),
 );
 
 const TweetBox = props => (
@@ -60,6 +61,7 @@ const TweetBox = props => (
             opacity: props.isButtonDisable ? .3 : 1,
           }}
           disabled={props.isButtonDisable}
+          onClick={props.onTweetClick}
         >
           Tweet
         </button>
