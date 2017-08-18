@@ -43,8 +43,8 @@ export default class extends Component {
             onTweetClick={this.handleOnTweet.bind(this)}
           />
         </div>
-        <div style={{ flex: 1, background: 'white' }}>
-          {this.state.tweets.slice().reverse().map((e, i) => <Tweet key={i} {...e.user} tweet={e.tweet} />)}
+        <div style={{ flex: 1, background: 'white', display: 'flex', flexDirection: 'column-reverse' }}>
+          {this.state.tweets.map((e, i) => <Tweet key={i} {...e.user} tweet={e.tweet} />)}
         </div>
       </div>
     );
@@ -135,7 +135,7 @@ function TweetBox(props) {
 
 function Tweet(props) {
   return (
-    <div style={{ height: 'auto', display: 'flex', borderBottom: '1px solid #e6ecf0' }}>
+    <div style={{ height: 'auto', display: 'flex', borderBottom: '1px solid #e6ecf0' }} className="tweet">
       <div style={{ flex: 1, position: 'relative' }}>
         <img
           style={{ 

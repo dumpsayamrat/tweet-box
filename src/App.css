@@ -27,3 +27,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.tweet {
+  animation: tweet-fade-in 1s;
+}
+
+@keyframes tweet-fade-in {
+  0% { opacity: 0; transform: translateY(-50%); }
+  100% { opacity: 1; transform: translateY(0%); }
+}
