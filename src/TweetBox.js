@@ -8,11 +8,16 @@ const enhance = compose(
     message,
     textRemaining: limit - message.length
   })),
-  mapProps(({ textRemaining, message, ...rest }) => ({
+  mapProps(({ textRemaining, ...rest }) => ({
     ...rest,
     textRemaining,
+    isLessThanTextRemaining: textRemaining < 0,
+  })),
+  mapProps(({ isLessThanTextRemaining, message, ...rest }) => ({
+    ...rest,
+    isLessThanTextRemaining,
     message,
-    isButtonDisable: !message.length || textRemaining < 0,
+    isButtonDisable: !message.length || isLessThanTextRemaining,
   })),
   flattenProp('user'),
 );
@@ -43,7 +48,7 @@ const TweetBox = props => (
         <h4
           style={{
             ...styles.textRemainingStyle, 
-            color: props.textRemaining < 0 ? 'red' : '#585858'
+            color: props.isLessThanTextRemaining ? 'red' : '#585858'
           }}
         >
           {props.textRemaining}
